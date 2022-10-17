@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { registerUser } from "../api/auth";
 
-export default function Register({ setToken }) {
+import useAuth from "../hooks/useAuth";
+
+export default function Register() {
+  const { setToken } = useAuth();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,7 +14,9 @@ export default function Register({ setToken }) {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
+          console.log({ username, password });
           const result = await registerUser(username, password);
+          console.log(result);
           const token = result.data.token;
           localStorage.setItem("token", token);
           setToken(token);

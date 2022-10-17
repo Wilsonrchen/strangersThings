@@ -1,25 +1,23 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import Register from "./components/Register";
-import { fetchMe } from "./api/auth";
+import NavBar from "./components/NavBar";
+import useAuth from "./hooks/useAuth";
+import { Routes, Route } from "react-router-dom";
+import Posts from "./components/Posts";
+import NewPost from "./components/CreatePosts";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState({});
-  useEffect(() => {
-    async function getMe() {
-      const result = await fetchMe(token);
-      setUser(result.data);
-    }
-    if (token) {
-      getMe();
-    }
-  }, [token]);
-
+  const { user } = useAuth();
   return (
     <div className="App">
-      <h4>{user?.username}</h4>
-      <Register setToken={setToken} />
+      <h4>Welcome, {user?.username}</h4>
+      <NavBar />
+
+      <Routes>
+        <Route path="/Posts" element={<Posts />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/CreatePosts" element={<NewPost />} />
+      </Routes>
     </div>
   );
 }
