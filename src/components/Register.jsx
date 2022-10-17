@@ -10,9 +10,7 @@ export default function Register({ setToken }) {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          console.log("Submit form");
           const result = await registerUser(username, password);
-          console.log(result);
           const token = result.data.token;
           localStorage.setItem("token", token);
           setToken(token);
@@ -30,7 +28,7 @@ export default function Register({ setToken }) {
           type="text"
           placeholder="password"
         />
-        <button>Register</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

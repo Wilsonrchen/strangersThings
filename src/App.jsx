@@ -9,14 +9,12 @@ function App() {
   useEffect(() => {
     async function getMe() {
       const result = await fetchMe(token);
-      console.log(result);
       setUser(result.data);
     }
     if (token) {
       getMe();
     }
   }, [token]);
-  console.log("tokens in app", token);
 
   return (
     <div className="App">
