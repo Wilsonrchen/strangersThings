@@ -3,7 +3,7 @@ import { fetchMe } from "../api/auth";
 
 export default function useAuth() {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({username:"Guest"});
 
   useEffect(() => {
     async function getMe() {
@@ -14,6 +14,8 @@ export default function useAuth() {
     }
     if (token) {
       getMe();
+    } else {
+      setUser({username: "Guest"});
     }
   }, [token]);
 

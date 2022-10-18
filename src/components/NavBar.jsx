@@ -1,16 +1,61 @@
 import { Link } from "react-router-dom";
+import styles from "../styles/NavBar.module.css";
+import Nav from "react-bootstrap/Nav";
 
-function NavBar() {
+import useAuth from "../hooks/useAuth";
+import { useReducer } from "react";
+import { Button } from "bootstrap";
+
+export default function NavBar({ user, setToken }) {
   return (
-    <nav>
-      <h1>Stranger's Things </h1>
-      <Link to="/Posts">Home</Link>
-      <Link to="/CreatePosts">Create A Post</Link>
-      <Link to="/Profile">Profile</Link>
-      <Link to="/Login-Logout">Login/Logout</Link>
-      <Link to="/Register">Register</Link>
-    </nav>
+    <Nav className={styles.background}>
+        <div className={styles.header}><div className={styles.logo}><b>Stranger's Things</b></div>
+      <div className={styles.welcome}><Nav.Item>Welcome, {user.username}</Nav.Item></div></div>
+      <Nav.Item>
+        <Link className={styles.text} to="/"> Home</Link>
+      </Nav.Item>
+      {user.username === "Guest" ? (
+        <>
+          {" "}
+          <Nav.Item>
+            <Link className={styles.text} to="/auth/login">
+              Login
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Link className={styles.text} to="/auth/register">
+              Register
+            </Link>
+          </Nav.Item>
+        </>
+      ) : null}
+
+      {user.username !== "Guest" ? (
+        <>
+          <Nav.Item>
+            <Link className={styles.text}
+              onClick={() => {
+                localStorage.removeItem("token");
+                setToken("");
+              }}
+            >
+              Log Out
+            </Link>
+          </Nav.Item>
+        </>
+      ) : null}
+      <Nav.Item>
+        <Link className={styles.text} to="/CreatePosts">
+          Create A Post
+        </Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Link className={styles.text} to="/Profile">
+          Profile
+        </Link>
+      </Nav.Item>
+    </Nav>
   );
 }
 
-export default NavBar;
+
