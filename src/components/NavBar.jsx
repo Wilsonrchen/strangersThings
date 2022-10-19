@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import Nav from "react-bootstrap/Nav";
+import logo from './stranger.png';
 
-import useAuth from "../hooks/useAuth";
-import { useReducer } from "react";
-import { Button } from "bootstrap";
+// import useAuth from "../hooks/useAuth";
+// import { useReducer } from "react";
+// import { Button } from "bootstrap";
+
+console.log(logo);
+
 
 export default function NavBar({ user, setToken }) {
   return (
     <Nav className={styles.background}>
-        <div className={styles.header}><div className={styles.logo}><b>Stranger's Things</b></div>
-      <div className={styles.welcome}><Nav.Item>Welcome, {user.username}</Nav.Item></div></div>
+        <div className={styles.header}><div className={styles.logo}><img src={logo} height={50} width={400} alt="Logo"/></div>
+      <div className={styles.welcome}><Nav.Item>Welcome, {user.username}</Nav.Item></div></div> 
       <Nav.Item>
         <Link className={styles.text} to="/"> Home</Link>
       </Nav.Item>
@@ -57,5 +61,6 @@ export default function NavBar({ user, setToken }) {
     </Nav>
   );
 }
+
 
 

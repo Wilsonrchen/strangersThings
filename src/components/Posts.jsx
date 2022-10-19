@@ -1,6 +1,8 @@
 import { fetchPosts } from "../api/posts";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/Posts.module.css";
+
 function Posts() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
@@ -14,13 +16,13 @@ function Posts() {
   }, []);
 
   return (
-    <div>
-      <h1>Posts</h1>
+    <div className={styles.Posts}>
+      <div className={styles.head}><h1><b>Posts</b></h1></div>
       {posts.map((post) => {
         return (
           <div key={post._id}>
             <h3>{post.title}</h3>
-            <h4>{post.description}</h4>
+            <h6>{post.description}</h6>
             <h5>Price: {post.price}</h5>
             <h6>Seller: {post.author.username}</h6>
             <button
