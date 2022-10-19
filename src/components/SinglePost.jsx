@@ -22,13 +22,15 @@ function SinglePost() {
     const result = await deletePostById(singlePost._id, token);
     navigate("/");
   }
-
+  console.log(singlePost);
   return (
     <div>
       <div>
         <h3>{singlePost.title}</h3>
         <h4>{singlePost.description}</h4>
         <h5>Price: {singlePost.price}</h5>
+        <h5>Location: {singlePost.location}</h5>
+        <h5>Seller: {singlePost.author.username}</h5>
         <button onClick={handleDelete}>Thanos Snap</button>
       </div>
     </div>
