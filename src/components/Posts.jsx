@@ -22,6 +22,7 @@ function Posts() {
             <h3>{post.title}</h3>
             <h4>{post.description}</h4>
             <h5>Price: {post.price}</h5>
+            <h6>Seller: {post.author.username}</h6>
             <button
               onClick={() => {
                 navigate(`/posts/${post._id}`);
