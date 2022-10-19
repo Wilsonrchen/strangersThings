@@ -22,7 +22,13 @@ function Posts() {
             <h3>{post.title}</h3>
             <h4>{post.description}</h4>
             <h5>Price: {post.price}</h5>
-            <button>See Details</button>
+            <button
+              onClick={() => {
+                navigate(`/posts/${post._id}`);
+              }}
+            >
+              See Details
+            </button>
           </div>
         );
       })}
