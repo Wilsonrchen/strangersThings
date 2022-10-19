@@ -30,6 +30,7 @@ function SinglePost() {
         <h3>{singlePost.title}</h3>
         <h4>{singlePost.description}</h4>
         <h5>Price: {singlePost.price}</h5>
+
         <button onClick={handleDelete}>Thanos Snap</button>
       </div>
       <div>
@@ -40,6 +41,7 @@ function SinglePost() {
             e.preventDefault();
             const result = await postMessages(singlePost._id, token, content);
             console.log(result);
+            navigate("/");
           }}
         >
           <input
