@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchMe } from "../api/auth";
+import styles from "../styles/profile.module.css";
 
 import useAuth from "../hooks/useAuth";
 
@@ -14,14 +15,14 @@ function Profile({ user }) {
   //     }
   //   }, []);
   return (
-    <div>
-      <h2>Messages</h2>
+    <div className={styles.profile}>
+      <div className={styles.messages}><h2>Messages</h2></div>
       <div>
         {user?.messages?.map((message) => {
           console.log("I am the me:", message);
           return (
             <div>
-              {message.content} Sent by: {message.fromUser.username}
+              {message.content}<div className={styles.from}> Sent by: {message.fromUser.username}</div>
             </div>
           );
         })}
