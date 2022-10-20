@@ -6,6 +6,7 @@ import styles from "../styles/Posts.module.css";
 function Posts() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function getPosts() {
@@ -15,10 +16,27 @@ function Posts() {
     getPosts();
   }, []);
 
+  function postMatches(post, text) {
+    return post.title.toLowerCase().includes(text);
+  }
+
+  const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : posts;
+
   return (
     <div className={styles.Posts}>
-      <div className={styles.head}><h1><b>Posts</b></h1></div>
-      {posts.map((post) => {
+      <input
+        type="text"
+        value={searchTerm}
+        placeholder="Search..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className={styles.head}>
+        <h1>
+          <b>Posts</b>
+        </h1>
+      </div>
+      {postsToDisplay.map((post) => {
         return (
           <div key={post._id}>
             <h3>{post.title}</h3>

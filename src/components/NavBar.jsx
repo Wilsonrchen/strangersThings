@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import Nav from "react-bootstrap/Nav";
 import logo from "./stranger.png";

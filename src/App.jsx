@@ -7,6 +7,7 @@ import Posts from "./components/Posts";
 import NewPost from "./components/CreatePosts";
 import SinglePost from "./components/SinglePost";
 import Profile from "./components/Profile";
+import Update from "./components/Update";
 
 function App() {
   const { setToken, user } = useAuth();
@@ -16,9 +17,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Posts />} />
         <Route path="/auth/:method" element={<Auth setToken={setToken} />} />
-        <Route path="/CreatePosts" element={<NewPost />} />
+        <Route path="/createPosts" element={<NewPost />} />
         <Route path="/posts/:postId" element={<SinglePost />} />
         <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/update/:postId" element={<Update />} />
       </Routes>
     </div>
   );

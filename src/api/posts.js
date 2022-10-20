@@ -68,6 +68,29 @@ export const postMessages = async (id, token, content) => {
     }
   );
   const result = await response.json();
-  console.log(result);
+  console.log("this is the result", result);
+  return result;
+};
+
+export const editPost = async (title, description, price, token, id) => {
+  const response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2209-FTB-PT-WEB-FT/posts/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title,
+          description,
+          price,
+        },
+      }),
+    }
+  );
+  const result = await response.json();
+  console.log("post edit result", result);
   return result;
 };

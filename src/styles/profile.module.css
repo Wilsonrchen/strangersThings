@@ -6,17 +6,23 @@
 }
 
 .messages {
-  border-bottom: 2px solid black;
+  margin-top: 10vh;
+  margin-bottom: 3vh;
+  border: 2px solid black;
+  background-color: rgb(119, 0, 0);
+  color: white;
 }
 
 .profile {
   margin-top: 10vh;
   top: 0;
-  position: fixed;
-  left: 5vh;
 }
 
 .log {
   overflow-y: scroll;
   height: 50vh;
+}
+
+.message {
+  border: 0.2vh solid black;
 }
