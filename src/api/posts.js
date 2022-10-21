@@ -68,7 +68,6 @@ export const postMessages = async (id, token, content) => {
     }
   );
   const result = await response.json();
-  console.log("this is the result", result);
   return result;
 };
 
@@ -91,6 +90,5 @@ export const editPost = async (title, description, price, token, id) => {
     }
   );
   const result = await response.json();
-  console.log("post edit result", result);
   return result;
 };

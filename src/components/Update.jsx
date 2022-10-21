@@ -26,7 +26,7 @@ export default function Update() {
             postId
           );
           navigate("/");
-          console.log("this is the result", result);
+          console.log(result);
         }}
       >
         <input

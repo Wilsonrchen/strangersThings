@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchSinglePost, deletePostById, postMessages } from "../api/posts";
 import useAuth from "../hooks/useAuth";
+import styles from "../styles/SinglePost.module.css";
 
 function SinglePost() {
   const navigate = useNavigate();
@@ -22,8 +23,8 @@ function SinglePost() {
 
   return (
     <div>
-      <div>
-        <h3>{singlePost.title}</h3>
+      <div className={styles.singlepost}>
+        <h3 className={styles.title}>{singlePost.title}</h3>
         <h4>{singlePost.description}</h4>
         <h5>Price: {singlePost.price}</h5>
         {user?._id === singlePost.author?._id && (
@@ -49,8 +50,8 @@ function SinglePost() {
         )}
       </div>
 
-      <div>
-        <h3>Leave a Message</h3>
+      <div className={styles.leavemessage}>
+        <h4>Leave a Message</h4>
         <h4>{singlePost.messages}</h4>
         <form
           onSubmit={async (e) => {
@@ -70,7 +71,12 @@ function SinglePost() {
             }}
           ></input>
           {user?._id !== singlePost.author?._id && (
-            <button type="submit"> Submit</button>
+            <div>
+              <button className={styles.submit} type="submit">
+                {" "}
+                Submit
+              </button>
+            </div>
           )}
           {user?._id === singlePost.author?._id && (
             <h5>Cannot send messages to yourself</h5>

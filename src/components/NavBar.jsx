@@ -7,8 +7,6 @@ import logo from "./stranger.png";
 // import { useReducer } from "react";
 // import { Button } from "bootstrap";
 
-console.log(logo);
-
 export default function NavBar({ user, setToken }) {
   return (
     <Nav className={styles.background}>

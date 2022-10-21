@@ -26,6 +26,7 @@ function Posts() {
   return (
     <div className={styles.Posts}>
       <input
+        className={styles.search}
         type="text"
         value={searchTerm}
         placeholder="Search..."

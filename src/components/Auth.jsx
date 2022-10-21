@@ -15,7 +15,6 @@ export default function Auth({ setToken }) {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          console.log({ username, password });
 
           let result;
           if (method === "register") {

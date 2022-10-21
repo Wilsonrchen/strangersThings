@@ -21,8 +21,13 @@
 .log {
   overflow-y: scroll;
   height: 50vh;
+  padding-right: 2vh;
 }
 
 .message {
   border: 0.2vh solid black;
+}
+
+.photo {
+  margin-left: 80vh;
 }

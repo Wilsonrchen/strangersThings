@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Posts.module.css";
 
-function UserPosts({user}) {
+function UserPosts({ user }) {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
@@ -14,11 +14,15 @@ function UserPosts({user}) {
     }
     getPosts();
   }, []);
-  const filterPosts = posts.filter (post => post.author._id === user._id)
+  const filterPosts = posts.filter((post) => post.author._id === user._id);
   return (
-   <div className={styles.profile}>
-      <div className={styles.head}><h1><b>My Posts</b></h1></div>
-      { filterPosts?.map((post)=>{
+    <div className={styles.profile}>
+      <div className={styles.head}>
+        <h1>
+          <b>My Posts</b>
+        </h1>
+      </div>
+      {filterPosts?.map((post) => {
         return (
           <div key={post._id}>
             <h3>{post.title}</h3>

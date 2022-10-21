@@ -1,11 +1,13 @@
 import styles from "../styles/profile.module.css";
-import Posts from "./Posts";
 import UserPosts from "./UserPosts";
+import logo from "./profile.jpeg";
 
 function Profile({ user }) {
-  console.log(user);
   return (
     <div className={styles.profile}>
+      <div className={styles.photo}>
+        <img src={logo} height={300} width={300} alt="Logo" />
+      </div>
       <UserPosts user={user} />
 
       <div className={styles.messages}>
@@ -14,7 +16,6 @@ function Profile({ user }) {
 
       <div className={styles.log}>
         {user?.messages?.map((message) => {
-          console.log("I am the me:", message);
           return (
             <div>
               <h3>{message.post.title}</h3>
@@ -29,10 +30,6 @@ function Profile({ user }) {
       </div>
     </div>
   );
-  <>
-    <Posts />
-  </>;
-  console.log();
 }
 
 export default Profile;
