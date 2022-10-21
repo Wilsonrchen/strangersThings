@@ -1,5 +1,4 @@
 import styles from "../styles/profile.module.css";
-import useAuth from "../hooks/useAuth";
 import Posts from "./Posts";
 import UserPosts from "./UserPosts";
 
@@ -7,13 +6,11 @@ function Profile({ user }) {
   console.log(user);
   return (
     <div className={styles.profile}>
-      <UserPosts user = {user}/> 
+      <UserPosts user={user} />
 
-       <div className={styles.messages}> 
+      <div className={styles.messages}>
         <h2>Messages</h2>
-        </div>
-      
-
+      </div>
 
       <div className={styles.log}>
         {user?.messages?.map((message) => {
@@ -32,8 +29,10 @@ function Profile({ user }) {
       </div>
     </div>
   );
- <><Posts/></>
- console.log()
+  <>
+    <Posts />
+  </>;
+  console.log();
 }
 
 export default Profile;

@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  fetchSinglePost,
-  deletePostById,
-  postMessages,
-  editPost,
-} from "../api/posts";
+import { fetchSinglePost, deletePostById, postMessages } from "../api/posts";
 import useAuth from "../hooks/useAuth";
-import Update from "./Update";
 
 function SinglePost() {
   const navigate = useNavigate();
@@ -25,11 +19,7 @@ function SinglePost() {
 
     getPostById();
   }, []);
-  async function handleDelete() {
-    const result = await deletePostById(singlePost._id, token);
-    navigate("/");
-    console.log("i am handle:", result);
-  }
+
   return (
     <div>
       <div>
@@ -58,6 +48,7 @@ function SinglePost() {
           </button>
         )}
       </div>
+
       <div>
         <h3>Leave a Message</h3>
         <h4>{singlePost.messages}</h4>
@@ -78,7 +69,12 @@ function SinglePost() {
               setContent(e.target.value);
             }}
           ></input>
-          <button type="submit"> Submit</button>
+          {user?._id !== singlePost.author?._id && (
+            <button type="submit"> Submit</button>
+          )}
+          {user?._id === singlePost.author?._id && (
+            <h5>Cannot send messages to yourself</h5>
+          )}
         </form>
       </div>
     </div>

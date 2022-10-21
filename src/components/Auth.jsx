@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { registerUser, loginUser } from "../api/auth";
 import { useNavigate, useParams } from "react-router";
-
-import useAuth from "../hooks/useAuth";
 
 export default function Auth({ setToken }) {
   const { method } = useParams();
